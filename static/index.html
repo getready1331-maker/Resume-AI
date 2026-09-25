@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Resume Analyzer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar">
+
+            <div class="logo">
+                Resume<span>AI</span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#analyzer">Analyzer</a></li>
+                <li><a href="#jobs-india">Jobs in India</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                AI POWERED RESUME ANALYSIS
+            </div>
+
+            <h1>
+                Discover the Right
+                <span>Career</span> for You
+            </h1>
+
+            <p>
+                Upload your resume to see how strong it is, which roles
+                fit your skills, and where those jobs are open across India.
+            </p>
+
+            <a href="#analyzer" class="hero-btn">
+                Analyze My Resume
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ANALYZER -->
+    <section id="analyzer" class="analyzer-section">
+
+        <div class="section-title">
+
+            <p>RESUME ANALYZER</p>
+
+            <h2>Analyze Your Resume</h2>
+
+            <span>
+                Upload your resume to discover suitable career options.
+            </span>
+
+        </div>
+
+
+        <!-- UPLOAD CARD -->
+        <div class="upload-card">
+
+            <div class="upload-icon">
+                📄
+            </div>
+
+            <h3>Upload Your Resume</h3>
+
+            <p>
+                Supported formats: PDF, DOC, DOCX and TXT (max 5 MB)
+            </p>
+
+            <label class="upload-area">
+
+                <div class="upload-text">
+                    <strong>Choose your resume</strong>
+                    <br>
+                    <small>or drag and drop your file here</small>
+                </div>
+
+                <input
+                    type="file"
+                    id="resumeFile"
+                    accept=".pdf,.doc,.docx,.txt"
+                >
+
+            </label>
+
+            <div id="fileName"></div>
+
+            <button id="analyzeBtn" type="button">
+                🔍 Analyze Resume
+            </button>
+
+            <p id="message"></p>
+
+        </div>
+
+
+        <!-- RESULTS -->
+        <div id="results" class="results">
+
+            <div class="result-heading">
+
+                <p>ANALYSIS COMPLETE</p>
+
+                <h2>Your Resume Analysis</h2>
+
+            </div>
+
+
+            <!-- SCORE -->
+            <div class="score-box">
+
+                <div class="score-circle">
+
+                    <span id="score">
+                        0%
+                    </span>
+
+                </div>
+
+                <div class="score-info">
+
+                    <h3>Resume Strength</h3>
+
+                    <p id="resumeSummary">
+                        Your resume has been analyzed based on
+                        skills, experience and technical keywords.
+                    </p>
+
+                    <div id="scoreBreakdown" class="breakdown"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CAREER MATCHES -->
+            <div class="matches-section">
+
+                <h3>Best Career Matches</h3>
+
+                <div id="careerMatches" class="match-list"></div>
+
+            </div>
+
+
+            <!-- JOBS ALL OVER INDIA -->
+            <div id="jobs-india" class="jobs-section">
+
+                <div class="jobs-heading">
+
+                    <p>JOBS ACROSS INDIA</p>
+
+                    <h2>Openings All Over India</h2>
+
+                    <span id="jobsCount">
+                        Based on the skills detected in your resume.
+                    </span>
+
+                </div>
+
+
+                <!-- CITY / ZONE FILTER -->
+                <div class="filter-bar">
+
+                    <div class="filter-row">
+
+                        <label for="zoneFilter">Region</label>
+
+                        <select id="zoneFilter">
+                            <option value="">All India</option>
+                            <option value="North">North India</option>
+                            <option value="South">South India</option>
+                            <option value="East">East India</option>
+                            <option value="West">West India</option>
+                            <option value="Central">Central India</option>
+                            <option value="North East">North East</option>
+                            <option value="Remote">Remote</option>
+                        </select>
+
+
+                        <label for="roleFilter">Role</label>
+
+                        <select id="roleFilter">
+                            <option value="">All roles</option>
+                        </select>
+
+                    </div>
+
+                    <div id="cityChips" class="city-chips"></div>
+
+                </div>
+
+
+                <div id="jobOptions" class="job-grid">
+
+                    <!-- JavaScript will add jobs here -->
+
+                </div>
+
+            </div>
+
+
+            <!-- SKILLS -->
+            <div class="result-grid">
+
+                <div class="result-card">
+
+                    <div class="card-icon">
+                        ✓
+                    </div>
+
+                    <h3>Skills Found</h3>
+
+                    <div id="skillsFound">
+                    </div>
+
+                </div>
+
+
+                <div class="result-card">
+
+                    <div class="card-icon missing">
+                        !
+                    </div>
+
+                    <h3>Skills to Improve</h3>
+
+                    <div id="missingSkills">
+                    </div>
+
+                </div>
+
+
+                <div class="result-card">
+
+                    <div class="card-icon suggestion">
+                        💡
+                    </div>
+
+                    <h3>Suggestions</h3>
+
+                    <ul id="suggestions">
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about" class="about-section">
+
+        <div class="about-content">
+
+            <p>ABOUT PROJECT</p>
+
+            <h2>AI Resume Analyzer</h2>
+
+            <p>
+                This application reads your resume, scores it, detects your
+                skills and matches them to job roles with live openings
+                listed city by city across India.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026 ResumeAI | AI Resume Analyzer
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
